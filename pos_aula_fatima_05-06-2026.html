@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Resumo Pós-Aula — Fatima — CZK English</title>
+<style>
+    :root{
+      --page-bg: #f4f7fa;
+      --card-bg: #fff;
+      --accent: #2f86e6;
+      --accent-dark: #1f6fd1;
+      --green: #36b37e;
+      --muted: #6b7280;
+      --border: #e6eef8;
+      --box-radius: 12px;
+      --card-width: 720px;
+    }
+
+    html,body{
+      height:100%;
+      margin:0;
+      padding:0;
+      background:var(--page-bg);
+      font-family:Inter, "Segoe UI", Roboto, Arial, sans-serif;
+    }
+
+    .wrap{
+      min-height:100%;
+      display:flex;
+      align-items:flex-start;
+      justify-content:center;
+      padding:48px 20px;
+    }
+
+    .card{
+      width:100%;
+      max-width:var(--card-width);
+      background:var(--card-bg);
+      border-radius:18px;
+      padding:28px;
+      box-shadow:0 6px 22px rgba(33,47,60,0.06);
+      border:1px solid rgba(15,33,64,0.03);
+    }
+
+    header{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:12px;
+      margin-bottom:8px;
+    }
+
+    .badge{
+      background:linear-gradient(180deg,#fff,#f2fbff);
+      border:1px solid var(--border);
+      padding:8px 12px;
+      border-radius:999px;
+      color:var(--accent);
+      font-weight:700;
+      font-size:0.85rem;
+    }
+
+    h1{
+      margin:0;
+      font-size:1.3rem;
+      color:#0f1724;
+    }
+
+    .meta{
+      color:var(--muted);
+      font-size:0.92rem;
+      margin-top:6px;
+    }
+
+    .actions{
+      display:flex;
+      gap:10px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 14px;
+      border-radius:10px;
+      border:none;
+      background:var(--accent);
+      color:#fff;
+      text-decoration:none;
+      font-weight:600;
+      cursor:pointer;
+      box-shadow:0 6px 14px rgba(47,134,230,0.12);
+    }
+
+    .btn.secondary{
+      background:#fff;
+      color:var(--accent);
+      border:1px solid var(--border);
+      box-shadow:none;
+    }
+
+    main{margin-top:18px;}
+    section{margin-top:18px;}
+
+    .panel{
+      background:#fbfdff;
+      border-radius:12px;
+      padding:16px;
+      border:1px solid var(--border);
+    }
+
+    .outline-card{
+      border-radius:10px;
+      border:1px solid var(--border);
+      padding:16px;
+      background:#fff;
+    }
+
+    /* Vocabulary boxes */
+    .vocab-grid{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      margin-top:10px;
+    }
+
+    .vocab{
+      flex:1;
+      min-width:220px;
+      border-radius:10px;
+      padding:14px;
+      border:2px solid #dfeefe;
+      background:#fff;
+    }
+
+    .vocab.green{
+      border-color:#c9f3dc;
+      background:#f5fff6;
+    }
+
+    .vocab h3{
+      margin:0;
+      font-size:1rem;
+      color:#154360;
+    }
+
+    .vocab p{
+      margin:8px 0 0 0;
+      color:var(--muted);
+      font-size:0.95rem;
+    }
+
+    /* Transcrição / gravação buttons */
+    .media-row{
+      display:flex;
+      gap:14px;
+      margin-top:12px;
+      flex-wrap:wrap;
+    }
+
+    .media-btn{
+      background:#fff;
+      border:1px solid var(--border);
+      padding:12px 16px;
+      border-radius:10px;
+      font-weight:700;
+      color:var(--accent);
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      min-width:200px;
+      justify-content:center;
+    }
+
+    /* Homework box */
+    .homework{
+      background:#f3fff6;
+      border:1px solid #d7f5df;
+      border-radius:10px;
+      padding:14px;
+      margin-top:10px;
+    }
+
+    /* ===== TALK TIME – TABELA RETANGULAR ===== */
+    .speaking{
+      margin-top:18px;
+      padding:16px;
+      border-radius:12px;
+      background:linear-gradient(180deg,#ffffff,#fbfdff);
+      border:1px solid var(--border);
+      max-width:640px;
+    }
+
+    .speaking h2{
+      margin:0 0 10px 0;
+      font-size:1.05rem;
+      color:#0f1724;
+    }
+
+    .talk-table{
+      width:100%;
+      border-collapse:collapse;
+      border-radius:10px;
+      overflow:hidden;
+      background:#fff;
+      border:1px solid #e1e9f5;
+      font-size:0.9rem;
+    }
+
+    .talk-table th,
+    .talk-table td{
+      padding:8px 10px;
+      text-align:left;
+    }
+
+    .talk-table th{
+      background:#eef4ff;
+      color:#1b3556;
+      font-weight:700;
+      border-bottom:1px solid #dde6fa;
+    }
+
+    .row-teacher{
+      background:#e7f2ff; /* azul clarinho */
+    }
+
+    .row-student{
+      background:#e8f7ef; /* verde clarinho */
+    }
+
+    .talk-label{
+      font-weight:700;
+    }
+
+    .talk-percent{
+      font-weight:700;
+      color:#0f1724;
+    }
+
+    .talk-time{
+      color:var(--muted);
+    }
+
+    footer{
+      margin-top:20px;
+      color:var(--muted);
+      font-size:0.9rem;
+      text-align:center;
+    }
+
+    /* responsive */
+    @media (max-width:720px){
+      .card{padding:18px;border-radius:14px;}
+      .vocab-grid{flex-direction:column;}
+      .media-row{flex-direction:column;}
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+<article class="card" role="main">
+<header>
+<div>
+<div style="display:flex;gap:10px;align-items:center;">
+<span class="badge">PÓS-AULA</span>
+<h1>Prepositions of Time &amp; Place — In, On, At</h1>
+</div>
+<div class="meta" style="margin-top:8px;"><strong>Professor:</strong> César  •  <strong>Aluno:</strong> Fatima  •  <strong>Data:</strong> 05/06/2026</div>
+</div>
+<div class="actions">
+<a class="btn" href="#" onclick="window.print();return false;">Imprimir / Salvar PDF</a>
+</div>
+</header>
+<main>
+<section class="panel">
+<p style="margin:0;font-weight:600;color:#08325a;">Resumo da aula sobre preposições de tempo e lugar, perguntas com when/where/what time, eventos e convites em inglês.</p>
+</section>
+<section>
+<h2 style="margin-bottom:8px;">Resumo da Aula</h2>
+<div class="outline-card">
+<p style="margin:0 0 8px 0;">
+  A aula começou com uma conversa rápida sobre novidades. Fatima contou que o grupo dela foi campeão no campeonato da Bateruja. Aproveitamos esse momento para corrigir formas naturais como <strong>We won</strong> e <strong>We were champions</strong>.
+</p>
+<p style="margin:0 0 8px 0;">
+  Depois, revisamos o conteúdo da aula anterior: as preposições <strong>in, on</strong> e <strong>at</strong>. Primeiro, relembramos o uso com tempo: <strong>at</strong> para horários específicos, como <em>at seven</em>; <strong>on</strong> para dias, como <em>on Thursday</em>; e <strong>in</strong> para meses, anos e também duração, como <em>in five minutes</em> e <em>in half an hour</em>.
+</p>
+<p style="margin:0 0 8px 0;">
+  Em seguida, passamos para preposições de lugar. Usamos a ideia do “zoom”: <strong>at</strong> para lugares bem específicos, como um endereço, uma escola, uma livraria ou restaurante; <strong>on</strong> para ruas e superfícies, como <em>on Main Street</em> ou <em>on the table</em>; e <strong>in</strong> para lugares maiores ou ideia de “dentro”, como <em>in Sorocaba</em>, <em>in Brazil</em> ou <em>in my office</em>.
+</p>
+<p style="margin:0 0 8px 0;">
+  A aluna praticou perguntas com <strong>where</strong>, <strong>when</strong> e <strong>what time</strong> usando eventos em flyers: filme, show, peça, palestra e exposição de arte. O foco foi responder com a preposição correta, por exemplo: <em>at the Film Forum</em>, <em>on Friday night</em> e <em>at seven</em>.
+</p>
+<p style="margin:0;">
+  No final, introduzimos convites com <strong>Would you like to...?</strong>, formas de aceitar e recusar convites, e ouvimos um diálogo em que uma pessoa convida outra para um evento. A compreensão geral foi boa: Fatima identificou que o primeiro convite foi recusado e que o segundo, para assistir a um filme, foi aceito.
+</p>
+</div>
+</section>
+<section>
+<h2 style="margin-bottom:8px;">Key Vocabulary</h2>
+<div class="vocab-grid">
+<div class="vocab">
+<h3>At</h3>
+<p style="margin-top:8px;font-size:0.92rem;color:var(--muted);">
+<em>(pt) em / no / na, usado para ponto específico</em><br/>
+<small>The movie is at the Film Forum.</small>
+</p>
+</div>
+<div class="vocab green">
+<h3>Would you like to...?</h3>
+<p style="margin-top:8px;font-size:0.92rem;color:var(--muted);">
+<em>(pt) você gostaria de...?</em><br/>
+<small>Would you like to go to a movie?</small>
+</p>
+</div>
+</div>
+</section>
+<!-- NOVOS TÓPICOS: VOCABULÁRIO DA AULA, FRASES MODELO, CORREÇÕES -->
+<section>
+<h2 style="margin-bottom:8px;">Vocabulário da aula</h2>
+<div class="outline-card">
+<h3 style="margin-top:0;">Preposições de tempo</h3>
+<ul>
+<li><strong>at seven</strong> – às sete</li>
+<li><strong>at noon</strong> – ao meio-dia</li>
+<li><strong>at midday</strong> – ao meio-dia</li>
+<li><strong>on Thursday</strong> – na quinta-feira</li>
+<li><strong>on Friday night</strong> – na sexta à noite</li>
+<li><strong>on Saturday</strong> – no sábado</li>
+<li><strong>in half an hour</strong> – em meia hora</li>
+<li><strong>in five minutes</strong> – em cinco minutos</li>
+</ul>
+<h3>Preposições de lugar</h3>
+<ul>
+<li><strong>at Main Street Books</strong> – na livraria Main Street Books</li>
+<li><strong>at the Film Forum</strong> – no Film Forum</li>
+<li><strong>at Elliott Stadium</strong> – no Elliott Stadium</li>
+<li><strong>at the bookstore</strong> – na livraria</li>
+<li><strong>at the restaurant next door</strong> – no restaurante ao lado</li>
+<li><strong>on Main Street</strong> – na Main Street</li>
+<li><strong>on the table</strong> – na mesa / sobre a mesa</li>
+<li><strong>on the wall</strong> – na parede</li>
+<li><strong>in my office</strong> – no meu escritório / dentro do meu escritório</li>
+<li><strong>in room 105</strong> – no quarto/sala 105</li>
+<li><strong>in Brazil</strong> – no Brasil</li>
+<li><strong>in Sorocaba</strong> – em Sorocaba</li>
+</ul>
+<h3>Eventos e convites</h3>
+<ul>
+<li><strong>event</strong> – evento</li>
+<li><strong>concert</strong> – show / concerto</li>
+<li><strong>movie</strong> – filme</li>
+<li><strong>play</strong> – peça de teatro</li>
+<li><strong>talk</strong> – palestra</li>
+<li><strong>art exhibit</strong> – exposição de arte</li>
+<li><strong>theater</strong> – teatro</li>
+<li><strong>stadium</strong> – estádio</li>
+<li><strong>gallery</strong> – galeria</li>
+<li><strong>bookstore</strong> – livraria</li>
+<li><strong>next door</strong> – ao lado</li>
+<li><strong>Would you like to...?</strong> – Você gostaria de...?</li>
+<li><strong>Sure.</strong> – Claro. / Com certeza.</li>
+<li><strong>That's not for me.</strong> – Isso não é para mim.</li>
+<li><strong>I'm busy then.</strong> – Estou ocupada nesse horário.</li>
+</ul>
+</div>
+</section>
+<section>
+<h2 style="margin-bottom:8px;">Frases modelo da aula</h2>
+<div class="outline-card">
+<ul>
+<li>We won.</li>
+<li>We were champions.</li>
+<li>Are you busy on Thursday evening?</li>
+<li>There is an interesting talk at Main Street Books.</li>
+<li>The book is on the table.</li>
+<li>See you in half an hour.</li>
+<li>Where is the movie?</li>
+<li>The movie is at the Film Forum.</li>
+<li>When is the movie?</li>
+<li>It's on Friday night.</li>
+<li>What time is the concert?</li>
+<li>It's at noon.</li>
+<li>Would you like to go to a movie?</li>
+<li>Sure. What time?</li>
+<li>That's not for me.</li>
+</ul>
+</div>
+</section>
+<!-- ✅ NOVA SEÇÃO FIXA: CORREÇÕES IMPORTANTES -->
+<section>
+<h2 style="margin-bottom:8px;">Correções importantes</h2>
+<div class="outline-card">
+<ul>
+<li><strong>❌ A gente foi campeões → ✅ We won / We were champions</strong><br/>
+  Para dizer “nós ganhamos”, a forma mais natural é <strong>We won</strong>. Para “nós fomos campeões”, usamos <strong>We were champions</strong>.</li>
+<li><strong>At / On / In com tempo</strong><br/>
+<strong>At</strong> é usado para horários específicos: <em>at seven</em>. <strong>On</strong> é usado para dias: <em>on Thursday</em>. <strong>In</strong> pode ser usado para duração: <em>in half an hour</em>.</li>
+<li><strong>At / On / In com lugar</strong><br/>
+<strong>At</strong> indica um lugar específico: <em>at the bookstore</em>. <strong>On</strong> indica rua ou superfície: <em>on Main Street</em>, <em>on the table</em>. <strong>In</strong> indica algo dentro ou uma área maior: <em>in my office</em>, <em>in Brazil</em>.</li>
+<li><strong>❌ At the street → ✅ on the street</strong><br/>
+  Quando falamos de rua sem número específico, usamos <strong>on</strong>: <em>on Main Street</em>.</li>
+<li><strong>❌ In the Film Forum → ✅ at the Film Forum</strong><br/>
+  Para lugares específicos de eventos, usamos <strong>at</strong>.</li>
+<li><strong>❌ A play = apenas jogar → ✅ a play = uma peça</strong><br/>
+<strong>Play</strong> pode ser verbo “jogar/brincar/tocar”, mas também pode ser substantivo: <em>a play</em> = uma peça de teatro.</li>
+<li><strong>Pronúncia: half an hour</strong><br/>
+  A expressão junta os sons: <em>half an hour</em>. O som fica conectado, não palavra por palavra.</li>
+<li><strong>Forty-five</strong><br/>
+  Foi reforçada a pronúncia de <strong>forty-five</strong> para horários como 7:45.</li>
+<li><strong>Tuesday x Thursday</strong><br/>
+<strong>Tuesday</strong> é terça-feira. <strong>Thursday</strong> é quinta-feira. Atenção à pronúncia e à diferença visual das palavras.</li>
+</ul>
+</div>
+</section>
+<!-- ✅ FIM DA NOVA SEÇÃO -->
+<section>
+<h2 style="margin-bottom:8px;">Transcrição &amp; Gravação</h2>
+<div class="media-row">
+<!-- Transcrição sem link (apenas botão) -->
+<a class="media-btn" href="#" role="button">📄 Acessar transcrição</a>
+<!-- Vídeo da aula com o link que você mandou -->
+<a class="media-btn" href="https://youtu.be/Z28SIREbIcY" rel="noopener noreferrer" role="button" style="background:linear-gradient(180deg,#1f6fd1,#2f86e6);color:#fff;border:none;min-width:260px;" target="_blank">
+              🎥 Assistir gravação (acesso privado)
+            </a>
+</div>
+</section>
+<!-- ===== TABELA DE DISTRIBUIÇÃO DE FALA ===== -->
+<section aria-label="Distribuição de fala" class="speaking">
+<h2>Tempo de Fala (Talk Time)</h2>
+<table class="talk-table">
+<thead>
+<tr>
+<th>Quem falou</th>
+<th>Porcentagem</th>
+<th>Duração aproximada</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-teacher">
+<td><span class="talk-label">César (Professor)</span></td>
+<td><span class="talk-percent">70%</span></td>
+<td class="talk-time">~42 minutos</td>
+</tr>
+<tr class="row-student">
+<td><span class="talk-label">Fatima</span></td>
+<td><span class="talk-percent">30%</span></td>
+<td class="talk-time">~18 minutos</td>
+</tr>
+</tbody>
+</table>
+</section>
+<!-- ===== FIM TABELA ===== -->
+<section>
+<h2 style="margin-bottom:8px;">Homework</h2>
+<div class="homework">
+<p style="margin:0;">
+  📌 <strong>Lição de casa:</strong> LEMBRAR de LER O POS AULA DE 2 A 3X NA SEMANA
+</p>
+</div>
+<div style="margin-top:14px;">
+<a class="btn" href="https://wa.me" style="background:#25D366;border-radius:10px;box-shadow:none;">
+              💬 Falar comigo no WhatsApp
+            </a>
+</div>
+</section>
+</main>
+<footer>
+<p style="margin:18px 0 0 0;color:var(--muted);font-size:0.9rem;">
+          © 2025 CZK English • Este conteúdo é exclusivo para fins educacionais. • Suporte: czkenglish@gmail.com
+        </p>
+</footer>
+</article>
+</div>
+</body>
+</html>
